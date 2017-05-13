@@ -19,6 +19,12 @@ public class AnimatedTextInput: UIControl {
     public  weak var delegate: AnimatedTextInputDelegate?
     public private(set) var isActive = false
 
+    public var returnKeyType: UIReturnKeyType = .Default {
+        didSet {
+            textInput.returnKeyType = returnKeyType
+        }
+    }
+
     public var type: AnimatedTextInputType = .standard {
         didSet {
             configureType()
@@ -382,6 +388,7 @@ public protocol TextInput {
     var font: UIFont? { get set }
     var textColor: UIColor? { get set }
     weak var textInputDelegate: TextInputDelegate? { get set }
+    var returnKeyType: UIReturnKeyType { get set }
 }
 
 public protocol TextInputDelegate: class {
